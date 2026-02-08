@@ -15,24 +15,39 @@
 - [ ] Les messages d'erreur doivent être explicites
 - [ ] Gestion propre de tous les cas d'erreur
 
+---
+
 ## 1. Saisie utilisateur
-- [ ] Nombre de lignes de la matrice (entier positif)
-  - [ ] **ValueError:** si le nombre n'est pas entier
-  - [ ] **Valeur négatives ou nulles:** si le nombre est nulle ou négatif
-  - [ ] **Dimension trop grandes:** si au dessus de la limite imposé (10x10 max)
-- [ ] Nombre de collone de la matrice (entier positif)
-  - [ ] **ValueError:** si le nombre n'est pas entier
-  - [ ] **Valeur négatives ou nulles:** si le nombre est nulle ou négatif
-  - [ ] **Dimension trop grandes:** si au dessus de la limite imposé (10x10 max)
-- [ ] Valeur maximale pour les nombres aléatoires (entier positif >= 1)
-  - [ ] **ValueError:** si le nombre n'est pas entier
-  - [ ] **Valeur négatives ou nulles:** si le nombre est nulle ou négatif
-- [ ] Gestion de toute erreur inattendue avec un message clair
+- [x] Nombre de lignes de la matrice (entier positif)
+  - [x] **ValueError:** si le nombre n'est pas entier
+  - [x] **Valeur négatives ou nulles:** si le nombre est nulle ou négatif
+  - [x] **Dimension trop grandes:** si au dessus de la limite imposé (10x10 max)
+        
+- [x] Nombre de collone de la matrice (entier positif)
+  - [x] **ValueError:** si le nombre n'est pas entier
+  - [x] **Valeur négatives ou nulles:** si le nombre est nulle ou négatif
+  - [x] **Dimension trop grandes:** si au dessus de la limite imposé (10x10 max)
+        
+- [x] Valeur maximale pour les nombres aléatoires (entier positif >= 1)
+  - [x] **ValueError:** si le nombre n'est pas entier
+  - [x] **Valeur négatives ou nulles:** si le nombre est nulle ou négatif
+        
+- [x] Gestion de toute erreur inattendue avec un message clair
+      
+- [x] Test et fix de bug
+
+---
 
 ## 2. Génération de la matrice
-- [ ] Générer une matrice (lignes x colonnes)
-- [ ] Remplir chaque cellule avec un entier aléatoire (1 à val max saisie)
-- [ ] Afficher la matrice de manière claire
+- [x] Générer une matrice (lignes x colonnes)
+      
+- [x] Remplir chaque cellule avec un entier aléatoire (1 à val max saisie)
+      
+- [x] Afficher la matrice de manière claire
+      
+- [x] Test et fix de bug
+
+---
 
 ## 3. Navigation dans la matrice selon les règles du chemin le plus long
 - On peut partir de n'importe quelle cellule
@@ -42,7 +57,9 @@
 - Objectif : trouver la longueur (nombre de cellules) du chemin le plus long possible
 
 - [ ] trouver et resourdre un algorithme pour parse la matrice selon les règles
+      
 - [ ] Implementer l'algorithme
+      
 - [ ] Tester et resourde tous bug qui survient
 
 ### Exemples
@@ -86,19 +103,32 @@ terrain = [
 Pas de déplacement possible (pas de cellule strictement inférieure)
 Longueur : **1** (on reste sur place)
 
+---
+
 ## 4. Structure et Logique du programme (boucle while principale)
 - [ ] boucle while principale
+      
 - [ ] Demande du nombre de lignes
+      
 - [ ] Demande du nombre de colonnes
+      
 - [ ] Demande de la valeur maximales pour les nombres aleatoires
+      
 - [ ] Affichage de la matrice générée
+      
 - [ ] Message de chargement/calcul en cours
+      
 - [ ] Affichage du chemin le plus long calculé
+      
 - [ ] Demande si l'utilisateur souhaite effectuer un nouveau calcul ou quitter
+
+---
 
 ## 5. Plus
 - [ ] Afficher une example de chemin qui atteint la longeur maximale
+      
 - [ ] Proposer plusieurs stratégies de génération de matrice
+      
 - [ ] Afficher des statistiques sur la matrice
   - [ ] Nombre minimum
   - [ ] Nombre maximum
