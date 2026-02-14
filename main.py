@@ -117,90 +117,50 @@ def generation_matrice(nbr_lignes:int, nbr_colonnes:int, valeur_max:int) -> list
     return matrice
 
 # === CHEMIN LE PLUS LONG ===
-def chemin_plus_long(matrice:list):
-    # illustration des valeurs d'une matrice 3x3
-    # [m0xn0] [m0xn1] [m0xn2]
-    # [m1xn0] [m1xn1] [m1xn2]
-    # [m2xn0] [m2xn1] [m2xn2]
+def longest_path(matrix):
+    cache = {} # garde le resultat du chemin de chaque cellule pour rendre la recursion moins intense et plus effice
 
-    # pour le test de la fonction
-    matrice = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-    ]
+    # fonction qui trouve le chemin le plus a partir d'une seule position
+    def nav(position):
+        if position in cache: # permet de ne pas avoir a recalculle les path deja calcule
+            return cache[position]
 
-    longest_path = 0 # le chemin le plus long
+        possible_movements = [
+            (-1,0), # up
+            (1,0), # down
+            (0,-1), # left
+            (0,1) # right
+        ]
+        current_value = matrix[position[0]][position[1]]
+        longest_length = 0
 
-    cm = 0 # cm pour: current_m; garde en memoire la ligne courante
-    cn = 0 # cn pour: current_n; garde en memoire la colonne courante
-    # cm + 1 -> vers le bas
-    # cm -1 -> vers le haut
-    # cn +1 -> vers la droite
-    # cn -1 -> vers la gauche
+        for move in possible_movements:
+            try:
+                eval_cell = (position[0] + move[0], position[1] + move[1])
+                eval_val = matrix[eval_cell[0]][eval_cell[1]]
+            except IndexError:
+                continue
 
-    # parse la matrice au complet
-    while True:
-        try:
-            # -- Teste chemin vers la droite --
-            if cn + 1 <= len(matrice[cm]) + 1: # teste si le movement nous sort des index valides
-                if matrice[cm][cn] > matrice[cm][cn+1]:
-                    # debug print
-                    print(f"Valeur courante: matrice[{cm}][{cn}]={matrice[cm][cn]}")
-                    print(f"Valeur a droite: matrice[{cm}][{cn+1}]={matrice[cm][cn+1]}\n")
+            if eval_cell[0] < 0 or eval_cell[1] < 0:
+                continue
 
-                    cn += 1
-                    longest_path += 1
-            else:
-                raise IndexError
+            if eval_val < current_value: #we ran out of movements
+                length = 1 + nav(eval_cell)
+                if length > longest_length:
+                    longest_length = length
 
-            # -- Teste chemin vers la gauche --
-            if cn - 1 >= 0: # teste si le movement nous sort des index valides
-                if matrice[cm][cn] > matrice[cm][cn-1]:
-                    #debug prints
-                    print(f"Valeur courante: matrice[{cm}][{cn}]={matrice[cm][cn]}")
-                    print(f"Valeur a droite: matrice[{cm}][{cn+1}]={matrice[cm][cn+1]}\n")
+        cache[position] = longest_length
+        return longest_length
 
-                    cn += 1
-                    longest_path += 1
-            else:
-                raise IndexError
+    longest_matrix_path = 0
 
-            # -- Teste chemin vers le bas --
-            if cm + 1 < len(matrice): # teste si le movement nous sort des index valides
-                if matrice[cm][cn] > matrice[cm+1][cn]:
-                    #debug prints
-                    print(f"Valeur courante: matrice[{cm}][{cn}]={matrice[cm][cn]}")
-                    print(f"Valeur en dessous: matrice[{cm+1}][{cn}]={matrice[cm+1][cn]}\n")
+    for i, ligne in enumerate(matrix):
+        for j, colonne in enumerate(ligne):
+            current_path = nav((i,j))
+            if current_path > longest_matrix_path:
+                longest_matrix_path = current_path
 
-                    cm += 1
-                    longest_path += 1
-            else:
-                raise IndexError
-
-            # -- Teste chemin vers le haut --
-            if cm - 1 >= 0: # teste si le movement nous sort des index valides
-                if matrice[cm][cn] > matrice[cm-1][cn]:
-                    #debug prints
-                    print(f"Valeur courante: matrice[{cm}][{cn}]={matrice[cm][cn]}")
-                    print(f"Valeur au dessus: matrice[{cm-1}][{cn}]={matrice[cm-1][cn]}\n")
-
-                    cm -= 1
-                    longest_path += 1
-
-            print(f"Chemin le plus long: {longest_path}")
-            print(f"Valeur de depart: {matrice[0][0]}")
-            print(f"Valeur courante: {matrice[cm][cn]}")
-            break
-        except IndexError:
-            print("Erreur: Index out of bounds")
-            break
-
-    # for m in matrice:
-    #     for n in matrice:
-    #         while True: # while qui navigue dans la matrice a en partant de n
-    #             if n > matrice[current_m][current_n]: # compare le n present au
-
+    return longest_matrix_path
 
 
 
