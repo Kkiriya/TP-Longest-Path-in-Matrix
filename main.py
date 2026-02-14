@@ -87,13 +87,16 @@ def saisie_utilisateur():
     return nbr_lignes, nbr_colonnes, nbr_aleatoire_max
 
 # === GENERATION DE LA MATRICE ===
-def generation_matrice(nbr_lignes:int, nbr_colonnes:int, valeur_max:int):
+def generation_matrice(nbr_lignes:int, nbr_colonnes:int, valeur_max:int) -> list:
     """Genere une matrice selon un nombre de lignes et colonnes passee en arguments et la remplie de nombre aleatoire ne depassant pas la valeur max passee en argument
 
     Args:
         nbr_lignes (int): le nombre de lignes de la matrice a generer
         nbr_colonnes (int): le nombre de colonnes  de la matrice a generer
         valeur_max (int): la valeur maximum des nombre aleatoire
+
+    Returns:
+            list: la matrice generer
     """
     matrice = [] # liste qui contient la matrice
 
@@ -111,6 +114,54 @@ def generation_matrice(nbr_lignes:int, nbr_colonnes:int, valeur_max:int):
     for lignes in matrice:
         print("|" + "|".join(f"{n:0{nbr_width}d}".center(nbr_width + 2) for n in lignes) + "|") # join toute les valeur de n dans lignes
 
+    return matrice
+
+# === CHEMIN LE PLUS LONG ===
+def longest_path(matrix):
+    cache = {} # garde le resultat du chemin de chaque cellule pour rendre la recursion moins intense et plus effice
+
+    # fonction qui trouve le chemin le plus a partir d'une seule position
+    def nav(position):
+        if position in cache: # permet de ne pas avoir a recalculle les path deja calcule
+            return cache[position]
+
+        possible_movements = [
+            (-1,0), # up
+            (1,0), # down
+            (0,-1), # left
+            (0,1) # right
+        ]
+        current_value = matrix[position[0]][position[1]]
+        longest_length = 0
+
+        for move in possible_movements:
+            try:
+                eval_cell = (position[0] + move[0], position[1] + move[1])
+                eval_val = matrix[eval_cell[0]][eval_cell[1]]
+            except IndexError:
+                continue
+
+            if eval_cell[0] < 0 or eval_cell[1] < 0:
+                continue
+
+            if eval_val < current_value: #we ran out of movements
+                length = 1 + nav(eval_cell)
+                if length > longest_length:
+                    longest_length = length
+
+        cache[position] = longest_length
+        return longest_length
+
+    longest_matrix_path = 0
+
+    for i, ligne in enumerate(matrix):
+        for j, colonne in enumerate(ligne):
+            current_path = nav((i,j))
+            if current_path > longest_matrix_path:
+                longest_matrix_path = current_path
+
+    return longest_matrix_path
+
 
 
 
@@ -125,11 +176,13 @@ def main():
     # generation_matrice(1, 1, 2)
     # generation_matrice(10, 10, 100) # -> done and tested
 
+    # --- TEST DE CHEMIN LE PLUS LONG ---
+    chemin_plus_long([])
 
     # === LOGIQUE PRINCIPALE DU CODE ===
     print("=== CHEMIN LE PLUS LONG DANS UNE MATRICE ===")
 
-    # while
+
 
 
 if __name__ == "__main__":

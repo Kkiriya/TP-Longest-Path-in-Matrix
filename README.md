@@ -22,29 +22,29 @@
   - [x] **ValueError:** si le nombre n'est pas entier
   - [x] **Valeur négatives ou nulles:** si le nombre est nulle ou négatif
   - [x] **Dimension trop grandes:** si au dessus de la limite imposé (10x10 max)
-        
+
 - [x] Nombre de collone de la matrice (entier positif)
   - [x] **ValueError:** si le nombre n'est pas entier
   - [x] **Valeur négatives ou nulles:** si le nombre est nulle ou négatif
   - [x] **Dimension trop grandes:** si au dessus de la limite imposé (10x10 max)
-        
+
 - [x] Valeur maximale pour les nombres aléatoires (entier positif >= 1)
   - [x] **ValueError:** si le nombre n'est pas entier
   - [x] **Valeur négatives ou nulles:** si le nombre est nulle ou négatif
-        
+
 - [x] Gestion de toute erreur inattendue avec un message clair
-      
+
 - [x] Test et fix de bug
 
 ---
 
 ## 2. Génération de la matrice
 - [x] Générer une matrice (lignes x colonnes)
-      
+
 - [x] Remplir chaque cellule avec un entier aléatoire (1 à val max saisie)
-      
+
 - [x] Afficher la matrice de manière claire
-      
+
 - [x] Test et fix de bug
 
 ---
@@ -56,11 +56,11 @@
 - On ne peut pas sortir des limites de la matrice
 - Objectif : trouver la longueur (nombre de cellules) du chemin le plus long possible
 
-- [ ] trouver et resourdre un algorithme pour parse la matrice selon les règles
-      
-- [ ] Implementer l'algorithme
-      
-- [ ] Tester et resourde tous bug qui survient
+- [x] trouver et resourdre un algorithme pour parse la matrice selon les règles
+
+- [x] Implementer l'algorithme
+
+- [x] Tester et resourde tous bug qui survient
 
 ### Exemples
 
@@ -107,28 +107,28 @@ Longueur : **1** (on reste sur place)
 
 ## 4. Structure et Logique du programme (boucle while principale)
 - [ ] boucle while principale
-      
+
 - [ ] Demande du nombre de lignes
-      
+
 - [ ] Demande du nombre de colonnes
-      
+
 - [ ] Demande de la valeur maximales pour les nombres aleatoires
-      
+
 - [ ] Affichage de la matrice générée
-      
+
 - [ ] Message de chargement/calcul en cours
-      
+
 - [ ] Affichage du chemin le plus long calculé
-      
+
 - [ ] Demande si l'utilisateur souhaite effectuer un nouveau calcul ou quitter
 
 ---
 
 ## 5. Plus
 - [ ] Afficher une example de chemin qui atteint la longeur maximale
-      
+
 - [ ] Proposer plusieurs stratégies de génération de matrice
-      
+
 - [ ] Afficher des statistiques sur la matrice
   - [ ] Nombre minimum
   - [ ] Nombre maximum
