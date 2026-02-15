@@ -112,12 +112,12 @@ def generation_matrice(nbr_lignes:int, nbr_colonnes:int, valeur_max:int) -> list
     nbr_width = max(len(str(nbr)) for ligne in matrice for nbr in ligne) # retourne le nbr de charactere du nombre le plus grand de la matrice pour effectuer un formattage dynamique
 
     for lignes in matrice:
-        print("|" + "|".join(f"{n:0{nbr_width}d}".center(nbr_width + 2) for n in lignes) + "|") # join toute les valeur de n dans lignes
+        print(" " + " ".join(f"{n:{nbr_width}d}".center(nbr_width + 2) for n in lignes) + " ") # join toute les valeur de n dans lignes
 
     return matrice
 
 # === CHEMIN LE PLUS LONG ===
-def longest_path(matrix):
+def chemin_plus_long(matrix):
     cache = {} # garde le resultat du chemin de chaque cellule pour rendre la recursion moins intense et plus effice
 
     # fonction qui trouve le chemin le plus a partir d'une seule position
@@ -177,10 +177,31 @@ def main():
     # generation_matrice(10, 10, 100) # -> done and tested
 
     # --- TEST DE CHEMIN LE PLUS LONG ---
-    chemin_plus_long([])
+    # effectuer dans un autre fichier
 
     # === LOGIQUE PRINCIPALE DU CODE ===
-    print("=== CHEMIN LE PLUS LONG DANS UNE MATRICE ===")
+    while True:
+        print("=== CHEMIN LE PLUS LONG DANS UNE MATRICE ===")
+        # demande le nombre de lignes, colonnes et le max pour les nombres aleatoires
+        nbr_lignes, nbr_colonnes, nbr_aleatoire_max = saisie_utilisateur()
+
+        # genere et affiche la matrice
+        matrice = generation_matrice(nbr_lignes,nbr_colonnes, nbr_aleatoire_max)
+
+        # message de chargement
+        print("\nCalul en cours...")
+
+        # affiche le resultat
+        print(f"Longeur du chemin le plus long: {chemin_plus_long(matrice)}")
+
+        # demande si on souhaitre reccomencer
+        choix = input("\nvoulez vous-reccomencez? (O/N): ").strip().lower() # toute autre input que 'O' arrete le programme
+
+        if choix != 'o':
+            break
+        else:
+            print()
+            continue
 
 
 
